@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Examen1NETWEB.Models.Pedido>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descuento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente1.Rut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producto1.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descuento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente1.Rut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producto1.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Ver detalles", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+            @
+        </td>
+    </tr>
+}
+
+</table>

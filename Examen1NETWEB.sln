@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examen1NETWEB", "Examen1NETWEB\Examen1NETWEB.csproj", "{11044C36-9D66-4BF9-A05B-7B021CDE14F0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11044C36-9D66-4BF9-A05B-7B021CDE14F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11044C36-9D66-4BF9-A05B-7B021CDE14F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11044C36-9D66-4BF9-A05B-7B021CDE14F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11044C36-9D66-4BF9-A05B-7B021CDE14F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34D2CC82-9E2E-4BC6-82FD-6379F5766E65}
+	EndGlobalSection
+EndGlobal

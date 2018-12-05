@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EXAMEN1NETWEBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TipoCliente" Type="Int32" />
+    <Property Name="Rut" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TipoCliente1" Relationship="Self.FK__Cliente__TipoCli__145C0A3F" FromRole="Cliente" ToRole="TipoCliente" />
+    <NavigationProperty Name="Pedido" Relationship="Self.FK__Pedido__Cliente__173876EA" FromRole="Cliente" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="Pedido">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cliente" Type="Int32" />
+    <Property Name="Producto" Type="Int32" />
+    <Property Name="Descuento" Type="Int32" />
+    <NavigationProperty Name="Cliente1" Relationship="Self.FK__Pedido__Cliente__173876EA" FromRole="Pedido" ToRole="Cliente" />
+    <NavigationProperty Name="Producto1" Relationship="Self.FK__Pedido__Producto__182C9B23" FromRole="Pedido" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CodigoBarra" Type="Int32" />
+    <Property Name="Familia" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Precio" Type="Int32" />
+    <Property Name="DescuentoTope" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pedido" Relationship="Self.FK__Pedido__Producto__182C9B23" FromRole="Producto" ToRole="Pedido" />
+  </EntityType>
+  <EntityType Name="TipoCliente">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__TipoCli__145C0A3F" FromRole="TipoCliente" ToRole="Cliente" />
+  </EntityType>
+  <Association Name="FK__Cliente__TipoCli__145C0A3F">
+    <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoCliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cliente">
+        <PropertyRef Name="TipoCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pedido__Cliente__173876EA">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pedido__Producto__182C9B23">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
+    <End Role="Pedido" Type="Self.Pedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pedido">
+        <PropertyRef Name="Producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EXAMEN1NETWEBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Pedido" EntityType="Self.Pedido" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" />
+    <AssociationSet Name="FK__Cliente__TipoCli__145C0A3F" Association="Self.FK__Cliente__TipoCli__145C0A3F">
+      <End Role="TipoCliente" EntitySet="TipoCliente" />
+      <End Role="Cliente" EntitySet="Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pedido__Cliente__173876EA" Association="Self.FK__Pedido__Cliente__173876EA">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pedido__Producto__182C9B23" Association="Self.FK__Pedido__Producto__182C9B23">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Pedido" EntitySet="Pedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
